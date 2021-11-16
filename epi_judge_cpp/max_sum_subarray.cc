@@ -2,10 +2,16 @@
 
 #include "test_framework/generic_test.h"
 using std::vector;
+using namespace std;
 
 int FindMaximumSubarray(const vector<int>& A) {
   // TODO - you fill in here.
-  return -1;
+  int max_seen = 0, max_end = 0;
+  for (auto v : A) {
+    max_seen = max(max_seen + v, v);
+    max_end = max(max_seen, max_end);
+  }
+  return max_end;
 }
 
 int main(int argc, char* argv[]) {
